@@ -48,6 +48,9 @@ input CreateUserInput {
 
   """role of the user"""
   role: String!
+
+  """password of the user"""
+  password: String!
 }
 
 input UpdateUserInput {
@@ -65,5 +68,8 @@ input UpdateUserInput {
 
   """role of the user"""
   role: String
+
+  """password of the user"""
+  password: String
   userId: String!
 }

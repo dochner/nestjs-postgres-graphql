@@ -1,8 +1,9 @@
 import { ObjectType, Field, Int } from '@nestjs/graphql';
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, PrimaryGeneratedColumn, Unique } from 'typeorm';
 
 @Entity()
 @ObjectType()
+@Unique(['email'])
 export class User {
   @PrimaryGeneratedColumn('uuid')
   @Field(() => String, { description: 'id of the user' })
@@ -27,4 +28,7 @@ export class User {
   @Column({ nullable: true })
   @Field(() => String, { description: 'role of the user' })
   role: string;
+
+  @Column()
+  password: string;
 }

@@ -1,0 +1,22 @@
+version: "3.8"
+
+services:
+  postgres_multiplier_website:
+    image: postgres:13.4-alpine
+    container_name: postgres.nestjs_graphql_api.localhost
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=postgres
+      - POSTGRES_PASSWORD=postgres
+    volumes:
+      # - ./database/dump.sql:/docker-entrypoint-initdb.d/nestjs_graphql_api.sql
+      - .docker/postgres:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+    networks:
+      - nestjs_graphql_api
+
+networks:
+  nestjs_graphql_api:
+    driver: bridge
+
